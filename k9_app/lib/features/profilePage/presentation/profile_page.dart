@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:k9_app/core/constant/app_colors.dart';
 import 'package:k9_app/core/providers/notifications_provider.dart';
 import 'package:k9_app/core/providers/theme_provider.dart';
 
@@ -43,8 +44,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   color: isDarkMode ? theme.cardColor : Colors.white,
                   border: Border.all(
                     color: isDarkMode
-                        ? Colors.grey.shade700
-                        : Colors.grey.shade200,
+                        ? AppColors.darkModeCardBorder
+                        : AppColors.lightModeCardBorder,
                   ),
                 ),
                 child: Column(
@@ -198,6 +199,26 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: isDarkMode? theme.cardColor : Colors.white,
+                  border: Border.all(
+                    color: isDarkMode? AppColors.darkModeCardBorder: AppColors.lightModeCardBorder,
+                  )
+                ),
+                child: Column(
+                  children: [
+                    Text("K9 Vital İzleme Sistemi"),
+                    Text("Versiyon 1.0.0"),
+                    Text("I-LAB"),
+              
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -205,12 +226,13 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   }
 
   Padding containerInfos(String name, String value) {
+    final isDarkMode =ref.watch(themeProvider);
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(name, style: TextStyle(color: Colors.grey.shade700)),
+          Text(name, style: TextStyle(color: isDarkMode? AppColors.darkModeTextColor : AppColors.lightModeTextColor)),
           Text(value),
         ],
       ),
