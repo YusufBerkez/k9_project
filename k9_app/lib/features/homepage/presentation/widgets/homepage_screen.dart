@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:k9_app/core/constant/app_colors.dart';
 import 'package:k9_app/core/providers/theme_provider.dart';
 
 class HomePageScreen extends ConsumerStatefulWidget {
@@ -58,6 +59,8 @@ class _HomePageScreenState extends ConsumerState<HomePageScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode= ref.watch(themeProvider);
+    final theme= Theme.of(context);
     final cards = [
       const DogsInfoCards(
         icon: Icons.favorite,
@@ -217,13 +220,13 @@ class _HomePageScreenState extends ConsumerState<HomePageScreen> {
                 },
               ),
             ),
-            const DogsInfoListile(value: '45'),
+             DogsInfoListile(value: '45', isDark: isDarkMode,theme: theme,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey.shade200),
+                  color: isDarkMode ? theme.cardColor : Colors.white,
+                  border: Border.all(color: isDarkMode ? AppColors.darkModeCardBorder : AppColors.lightModeCardBorder),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 padding: const EdgeInsets.all(12),
@@ -242,6 +245,7 @@ class _HomePageScreenState extends ConsumerState<HomePageScreen> {
                       height: 190,
                       child: LineChart(
                         LineChartData(
+                          backgroundColor: theme.cardColor,
                           minX: 0,
                           maxX: 24,
                           minY: 0,
@@ -376,36 +380,42 @@ class _HomePageScreenState extends ConsumerState<HomePageScreen> {
 }
 
 class DogsInfoListile extends StatelessWidget {
-  const DogsInfoListile({super.key, required this.value});
+  const DogsInfoListile({super.key, required this.value, required this.isDark, required this.theme, });
   final String value;
-
+  final bool isDark;
+  final ThemeData theme;
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: ListTile(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          side: BorderSide(color: Colors.grey.shade200),
-        ),
-        leading: Container(
-          decoration: BoxDecoration(
-            color: Color(0xfff3e8ff),
+      child: Card(
+        color: isDark? theme.cardColor: Colors.white,
+        child: ListTile(
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: isDark ? AppColors.darkModeCardBorder : AppColors.lightModeCardBorder),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Icon(Icons.flash_on_rounded, color: Color(0xffba61fc)),
+          leading: Container(
+            decoration: BoxDecoration(
+              color: theme.cardColor,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: isDark ? AppColors.darkModeCardBorder : AppColors.lightModeCardBorder)
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Icon(Icons.flash_on_rounded, color: Color(0xffba61fc)),
+            ),
           ),
+          title: Text("Galvanik Deri Tepkisi"),
+          subtitle: Row(
+            children: [
+              Text(value, style: TextStyle(fontWeight: FontWeight.bold)),
+              Text(" μS"),
+            ],
+          ),
+          trailing: Icon(Icons.show_chart_sharp, color: Colors.green),
         ),
-        title: Text("Galvanik Deri Tepkisi"),
-        subtitle: Row(
-          children: [
-            Text(value, style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(" μS"),
-          ],
-        ),
-        trailing: Icon(Icons.show_chart_sharp, color: Colors.green),
       ),
     );
   }
@@ -430,11 +440,12 @@ class DogsInfoCards extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme=Theme.of(context);
     final isDarkMode = ref.watch(themeProvider);
     return Container(
       decoration: BoxDecoration(
-        color: isDarkMode ? Colors.grey : Colors.white,
-        border: Border.all(color: Colors.grey.shade200),
+        color: isDarkMode ? theme.cardColor : Colors.white,
+        border: Border.all(color: isDarkMode ? AppColors.darkModeCardBorder : AppColors.lightModeCardBorder),
         borderRadius: BorderRadius.circular(12),
       ),
       padding: const EdgeInsets.all(12),
@@ -459,7 +470,7 @@ class DogsInfoCards extends ConsumerWidget {
                 value,
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.black,
+                  color: isDarkMode ? AppColors.darkModeTextColor : AppColors.lightModeTextColor,
                   fontWeight: FontWeight.w600,
                 ),
               ),
