@@ -59,8 +59,8 @@ class _HomePageScreenState extends ConsumerState<HomePageScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode= ref.watch(themeProvider);
-    final theme= Theme.of(context);
+    final isDarkMode = ref.watch(themeProvider);
+    final theme = Theme.of(context);
     final cards = [
       const DogsInfoCards(
         icon: Icons.favorite,
@@ -220,13 +220,17 @@ class _HomePageScreenState extends ConsumerState<HomePageScreen> {
                 },
               ),
             ),
-             DogsInfoListile(value: '45', isDark: isDarkMode,theme: theme,),
+            DogsInfoListile(value: '45', isDark: isDarkMode, theme: theme),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Container(
                 decoration: BoxDecoration(
                   color: isDarkMode ? theme.cardColor : Colors.white,
-                  border: Border.all(color: isDarkMode ? AppColors.darkModeCardBorder : AppColors.lightModeCardBorder),
+                  border: Border.all(
+                    color: isDarkMode
+                        ? AppColors.darkModeCardBorder
+                        : AppColors.lightModeCardBorder,
+                  ),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 padding: const EdgeInsets.all(12),
@@ -380,27 +384,40 @@ class _HomePageScreenState extends ConsumerState<HomePageScreen> {
 }
 
 class DogsInfoListile extends StatelessWidget {
-  const DogsInfoListile({super.key, required this.value, required this.isDark, required this.theme, });
+  const DogsInfoListile({
+    super.key,
+    required this.value,
+    required this.isDark,
+    required this.theme,
+  });
   final String value;
   final bool isDark;
   final ThemeData theme;
-  
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        color: isDark? theme.cardColor: Colors.white,
+        color: isDark ? theme.cardColor : Colors.white,
         child: ListTile(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: isDark ? AppColors.darkModeCardBorder : AppColors.lightModeCardBorder),
+            side: BorderSide(
+              color: isDark
+                  ? AppColors.darkModeCardBorder
+                  : AppColors.lightModeCardBorder,
+            ),
           ),
           leading: Container(
             decoration: BoxDecoration(
               color: theme.cardColor,
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: isDark ? AppColors.darkModeCardBorder : AppColors.lightModeCardBorder)
+              border: Border.all(
+                color: isDark
+                    ? AppColors.darkModeCardBorder
+                    : AppColors.lightModeCardBorder,
+              ),
             ),
             child: Padding(
               padding: const EdgeInsets.all(4.0),
@@ -440,12 +457,16 @@ class DogsInfoCards extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme=Theme.of(context);
+    final theme = Theme.of(context);
     final isDarkMode = ref.watch(themeProvider);
     return Container(
       decoration: BoxDecoration(
         color: isDarkMode ? theme.cardColor : Colors.white,
-        border: Border.all(color: isDarkMode ? AppColors.darkModeCardBorder : AppColors.lightModeCardBorder),
+        border: Border.all(
+          color: isDarkMode
+              ? AppColors.darkModeCardBorder
+              : AppColors.lightModeCardBorder,
+        ),
         borderRadius: BorderRadius.circular(12),
       ),
       padding: const EdgeInsets.all(12),
@@ -470,7 +491,9 @@ class DogsInfoCards extends ConsumerWidget {
                 value,
                 style: TextStyle(
                   fontSize: 15,
-                  color: isDarkMode ? AppColors.darkModeTextColor : AppColors.lightModeTextColor,
+                  color: isDarkMode
+                      ? AppColors.darkModeTextColor
+                      : AppColors.lightModeTextColor,
                   fontWeight: FontWeight.w600,
                 ),
               ),

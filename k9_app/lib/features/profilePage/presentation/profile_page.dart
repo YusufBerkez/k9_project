@@ -204,17 +204,18 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: isDarkMode? theme.cardColor : Colors.white,
+                  color: isDarkMode ? theme.cardColor : Colors.white,
                   border: Border.all(
-                    color: isDarkMode? AppColors.darkModeCardBorder: AppColors.lightModeCardBorder,
-                  )
+                    color: isDarkMode
+                        ? AppColors.darkModeCardBorder
+                        : AppColors.lightModeCardBorder,
+                  ),
                 ),
                 child: Column(
                   children: [
                     Text("K9 Vital İzleme Sistemi"),
                     Text("Versiyon 1.0.0"),
                     Text("I-LAB"),
-              
                   ],
                 ),
               ),
@@ -226,13 +227,20 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   }
 
   Padding containerInfos(String name, String value) {
-    final isDarkMode =ref.watch(themeProvider);
+    final isDarkMode = ref.watch(themeProvider);
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(name, style: TextStyle(color: isDarkMode? AppColors.darkModeTextColor : AppColors.lightModeTextColor)),
+          Text(
+            name,
+            style: TextStyle(
+              color: isDarkMode
+                  ? AppColors.darkModeTextColor
+                  : AppColors.lightModeTextColor,
+            ),
+          ),
           Text(value),
         ],
       ),
