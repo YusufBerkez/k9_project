@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -30,3 +31,21 @@ class ThemeNotifier extends Notifier<bool> {
 final themeProvider = NotifierProvider<ThemeNotifier, bool>(() {
   return ThemeNotifier();
 });
+
+extension ThemeRef on WidgetRef {
+  // 1. Okumak için kısa yol (ref.isDark)
+  bool get isDark => watch(themeProvider);
+
+  // 2. Değiştirmek için kısa yol (ref.toggleTheme())
+  // Senin yazdığın fonksiyon parametre (bool) istiyordu,
+  // burada otomatik olarak "mevcut durumun tersini" yolluyoruz.
+  void toggleTheme() {
+    final notifier = read(themeProvider.notifier);
+    final isCurrentlyDark = read(themeProvider);
+    notifier.toggleTheme(!isCurrentlyDark);
+  }
+}
+
+extension ThemeContext on WidgetRef {
+  ThemeData get theme => Theme.of(context);
+}

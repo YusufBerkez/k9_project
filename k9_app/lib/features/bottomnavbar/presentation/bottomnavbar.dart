@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:k9_app/core/constant/app_colors.dart';
+import 'package:k9_app/core/providers/theme_provider.dart';
 import 'package:k9_app/features/homepage/presentation/widgets/homepage_screen.dart';
 import 'package:k9_app/features/profilePage/presentation/profile_page.dart';
 
@@ -20,7 +22,7 @@ class _BottomnavbarState extends ConsumerState<Bottomnavbar> {
       body: pages[selectedIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: ref.isDark ? AppColors.darkModeBottomNavbar : Colors.white,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.05),
