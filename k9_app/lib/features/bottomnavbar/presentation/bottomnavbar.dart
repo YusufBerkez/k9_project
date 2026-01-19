@@ -27,7 +27,7 @@ class _BottomnavbarState extends ConsumerState<Bottomnavbar> {
       body: pages[selectedIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: ref.isDark ? AppColors.darkModeBottomNavbar : Colors.white,
+          color: ref.isDark ? ref.theme.scaffoldBackgroundColor : Colors.white,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.05),
