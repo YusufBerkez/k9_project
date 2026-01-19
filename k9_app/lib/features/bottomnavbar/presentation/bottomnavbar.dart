@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k9_app/core/constant/app_colors.dart';
 import 'package:k9_app/core/providers/theme_provider.dart';
 import 'package:k9_app/features/homepage/presentation/widgets/homepage_screen.dart';
+import 'package:k9_app/features/live_monitoring/presentation/pages/live_page.dart';
 import 'package:k9_app/features/profilePage/presentation/profile_page.dart';
 
 class Bottomnavbar extends ConsumerStatefulWidget {
@@ -17,7 +18,11 @@ class _BottomnavbarState extends ConsumerState<Bottomnavbar> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> pages = [const HomePageScreen(), const ProfilePage()];
+    final List<Widget> pages = [
+      const HomePageScreen(),
+      const ProfilePage(),
+      const LivePage(),
+    ];
     return Scaffold(
       body: pages[selectedIndex],
       bottomNavigationBar: Container(
@@ -41,6 +46,11 @@ class _BottomnavbarState extends ConsumerState<Bottomnavbar> {
                   icon: Icons.bar_chart_rounded,
                   label: 'Kontrol',
                   index: 0,
+                ),
+                _buildNavItem(
+                  icon: Icons.monitor_heart_outlined,
+                  label: 'Canlı',
+                  index: 2,
                 ),
                 _buildNavItem(
                   icon: Icons.person_outline_rounded,
