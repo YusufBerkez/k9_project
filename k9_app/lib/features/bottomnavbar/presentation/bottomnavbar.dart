@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:k9_app/core/constant/app_colors.dart';
 import 'package:k9_app/core/providers/theme_provider.dart';
+import 'package:k9_app/features/chatpage/pages/chat_pages.dart';
 import 'package:k9_app/features/homepage/presentation/widgets/homepage_screen.dart';
 import 'package:k9_app/features/live_monitoring/presentation/pages/live_page.dart';
 import 'package:k9_app/features/profilePage/presentation/profile_page.dart';
@@ -22,6 +24,7 @@ class _BottomnavbarState extends ConsumerState<Bottomnavbar> {
       const HomePageScreen(),
       const ProfilePage(),
       const LivePage(),
+      const ChatPage(),
     ];
     return Scaffold(
       body: pages[selectedIndex],
@@ -51,6 +54,11 @@ class _BottomnavbarState extends ConsumerState<Bottomnavbar> {
                   icon: Icons.monitor_heart_outlined,
                   label: 'Canlı',
                   index: 2,
+                ),
+                _buildNavItem(
+                  icon: FontAwesomeIcons.comment,
+                  label: "Mesajlar",
+                  index: 3,
                 ),
                 _buildNavItem(
                   icon: Icons.person_outline_rounded,
