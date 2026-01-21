@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k9_app/core/providers/camera_provider.dart';
 import 'package:k9_app/features/live_monitoring/presentation/pages/camera_card.dart';
+import 'package:k9_app/features/live_monitoring/presentation/pages/line_char_card.dart';
+import 'package:k9_app/features/live_monitoring/presentation/pages/vr_show_card.dart';
+import 'package:k9_app/features/live_monitoring/presentation/real_time_char_card.dart';
 
 class LivePage extends ConsumerStatefulWidget {
   const LivePage({super.key});
@@ -37,28 +40,30 @@ class _LivePageState extends ConsumerState<LivePage> {
         children: [
           cameraList.isEmpty
               ? _buildEmptyState()
-              : Expanded(
-                  child: GridView.builder(
-                    padding: EdgeInsets.all(12),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // Yan yana 2 tane
-                      childAspectRatio:
-                          1.1, // <--- BURAYI ARTTIRDIK (0.8 çok inceydi, 1.1 daha kare, 1.3 yatay dikdörtgen yapar)
-                      crossAxisSpacing: 10, // Yatay boşluk
-                      mainAxisSpacing: 10, // Dikey boşluk
-                    ),
-                    itemCount: cameraList.length,
-                    itemBuilder: (context, index) {
-                      final camera = cameraList[index];
-                      return CameraCard(
-                        key: ValueKey(camera.id),
-                        videoUrl: camera.videoUrl,
-                        title: camera.title,
-                        id: camera.id,
-                      );
-                    },
+              : GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.all(12),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, // Yan yana 2 tane
+                    childAspectRatio:
+                        1.1, // <--- BURAYI ARTTIRDIK (0.8 çok inceydi, 1.1 daha kare, 1.3 yatay dikdörtgen yapar)
+                    crossAxisSpacing: 10, // Yatay boşluk
+                    mainAxisSpacing: 10, // Dikey boşluk
                   ),
+                  itemCount: cameraList.length,
+                  itemBuilder: (context, index) {
+                    final camera = cameraList[index];
+                    return CameraCard(
+                      key: ValueKey(camera.id),
+                      videoUrl: camera.videoUrl,
+                      title: camera.title,
+                      id: camera.id,
+                    );
+                  },
                 ),
+          VrShowCard(),
+          Expanded(child: RealTimeChartPage()),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
