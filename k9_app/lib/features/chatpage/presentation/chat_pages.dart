@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k9_app/core/providers/theme_provider.dart';
 import 'package:k9_app/features/chatpage/presentation/widgets/listtile_chat.dart';
+import 'package:k9_app/features/chatpage/presentation/widgets/messages_page.dart';
 
 class ChatPage extends ConsumerStatefulWidget {
   const ChatPage({super.key});
@@ -17,7 +18,6 @@ class _ChatPageState extends ConsumerState<ChatPage> {
       appBar: AppBar(title: Text("Mesajlar")),
       body: Column(
         children: [
-          
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
@@ -35,6 +35,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
             name: "Zeynep Su",
             surname: "Mollaoğlu",
             role: "Veteriner",
+            id: "zeynepsu",
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
