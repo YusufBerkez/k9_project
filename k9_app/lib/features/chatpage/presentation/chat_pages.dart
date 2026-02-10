@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k9_app/core/providers/theme_provider.dart';
-import 'package:k9_app/features/chatpage/pages/widgets/listtile_chat.dart';
+import 'package:k9_app/features/chatpage/presentation/widgets/listtile_chat.dart';
 
 class ChatPage extends ConsumerStatefulWidget {
   const ChatPage({super.key});
