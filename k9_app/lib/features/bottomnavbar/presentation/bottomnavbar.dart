@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:k9_app/core/constant/app_colors.dart';
 import 'package:k9_app/core/providers/theme_provider.dart';
 import 'package:k9_app/features/chatpage/presentation/chat_pages.dart';
 import 'package:k9_app/features/homepage/presentation/widgets/homepage_screen.dart';
@@ -9,7 +8,8 @@ import 'package:k9_app/features/live_monitoring/presentation/pages/live_page.dar
 import 'package:k9_app/features/profilePage/presentation/profile_page.dart';
 
 class Bottomnavbar extends ConsumerStatefulWidget {
-  const Bottomnavbar({super.key});
+  final String userId;
+  const Bottomnavbar({super.key, required this.userId});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _BottomnavbarState();
@@ -17,14 +17,13 @@ class Bottomnavbar extends ConsumerStatefulWidget {
 
 class _BottomnavbarState extends ConsumerState<Bottomnavbar> {
   int selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     final List<Widget> pages = [
       const HomePageScreen(),
       const ProfilePage(),
       const LivePage(),
-      const ChatPage(),
+      ChatPage(userId: widget.userId),
     ];
     return Scaffold(
       body: pages[selectedIndex],

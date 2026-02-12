@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k9_app/core/providers/theme_provider.dart';
 import 'package:k9_app/features/bottomnavbar/presentation/bottomnavbar.dart';
+import 'package:k9_app/features/enterpage/enterpage.dart';
 
 void main() {
   runApp(ProviderScope(child: const MyApp()));
@@ -52,7 +53,7 @@ class MyApp extends ConsumerWidget {
         ),
       ),
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      home: Bottomnavbar(),
+      home: Enterpage(),
     );
   }
 }

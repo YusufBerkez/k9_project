@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k9_app/core/providers/theme_provider.dart';
 import 'package:k9_app/features/chatpage/presentation/widgets/listtile_chat.dart';
-import 'package:k9_app/features/chatpage/presentation/widgets/messages_page.dart';
 
 class ChatPage extends ConsumerStatefulWidget {
-  const ChatPage({super.key});
+  final String userId;
+  const ChatPage({super.key, required this.userId});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _ChatPageState();
@@ -32,10 +32,19 @@ class _ChatPageState extends ConsumerState<ChatPage> {
           ),
           ListTileChat(
             ref: ref,
+            name: "Yusuf Berke",
+            role: "Mühendis",
+            surname: "Zengin",
+            id: "yusufberkez",
+            currentUserId: widget.userId,
+          ),
+          ListTileChat(
+            ref: ref,
             name: "Zeynep Su",
             surname: "Mollaoğlu",
             role: "Veteriner",
             id: "zeynepsu",
+            currentUserId: widget.userId,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

@@ -8,14 +8,15 @@ class ListTileChat extends StatelessWidget {
   final String role;
   final String surname;
   final String id;
+  final String currentUserId;
   const ListTileChat({
     super.key,
     required this.ref,
     required this.name,
-
     required this.role,
     required this.surname,
     required this.id,
+    required this.currentUserId,
   });
 
   final WidgetRef ref;
@@ -30,7 +31,10 @@ class ListTileChat extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MessagesPage(id: id)),
+              MaterialPageRoute(
+                builder: (context) =>
+                    MessagesPage(id: currentUserId, receiver_id: id, ref: ref),
+              ),
             );
           },
           leading: CircleAvatar(child: Text("${name[0]}${surname[0]}")),
