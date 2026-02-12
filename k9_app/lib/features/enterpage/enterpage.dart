@@ -12,6 +12,7 @@ class Enterpage extends ConsumerStatefulWidget {
 
 class _EnterpageState extends ConsumerState<Enterpage> {
   late TextEditingController tftext;
+  late TextEditingController tfId;
   var formkey = GlobalKey<FormState>();
   late TextEditingController tfEmail;
   late TextEditingController tfPassword;
@@ -19,6 +20,7 @@ class _EnterpageState extends ConsumerState<Enterpage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    tfId = TextEditingController();
     tftext = TextEditingController();
     tfEmail = TextEditingController();
     tfPassword = TextEditingController();
@@ -34,7 +36,6 @@ class _EnterpageState extends ConsumerState<Enterpage> {
         child: Center(
           child: SingleChildScrollView(
             child: Column(
-              
               children: [
                 //Kayıt işlemleri başlangıç
                 Padding(
@@ -68,6 +69,7 @@ class _EnterpageState extends ConsumerState<Enterpage> {
                                   tfEmail: tfEmail,
                                   tfPassword: tfPassword,
                                   obscureText: obscrText,
+                                  tfId: tfId,
                                 ),
                                 Column(children: [
                                     
@@ -97,8 +99,10 @@ class LoginField extends StatefulWidget {
     required this.tfEmail,
     required this.tfPassword,
     required this.obscureText,
+    required this.tfId,
   });
   final bool obscureText;
+  final TextEditingController tfId;
   final GlobalKey<FormState> formkey;
   final TextEditingController tfEmail;
   final TextEditingController tfPassword;
@@ -205,8 +209,35 @@ class _LoginFieldState extends State<LoginField> {
                       )
                       .build(),
                 ),
+                SizedBox(height: 30),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "ID: ",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                TextFormField(
+                  keyboardType: TextInputType.name,
+                  controller: widget.tfId,
+                ),
               ],
             ), //a56b1
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Bottomnavbar(userId: widget.tfId.text),
+                ),
+              );
+            },
+            child: Text("Giriş yap"),
           ),
         ],
       ),
