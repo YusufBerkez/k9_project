@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k9_app/core/providers/camera_provider.dart';
 import 'package:k9_app/features/live_monitoring/presentation/pages/camera_card.dart';
-import 'package:k9_app/features/live_monitoring/presentation/pages/line_char_card.dart';
 import 'package:k9_app/features/live_monitoring/presentation/pages/real_time_char_card.dart';
 import 'package:k9_app/features/live_monitoring/presentation/pages/vr_show_card.dart';
 

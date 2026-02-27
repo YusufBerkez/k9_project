@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:k9_app/features/bottomnavbar/presentation/bottomnavbar.dart';
 import 'package:k9_app/features/enterpage/presentation/signup_field.dart';
 import 'package:k9_app/features/enterpage/presentation/widgets/login_field.dart';
-import 'package:k9_app/features/enterpage/providers/login_providers.dart';
 
 class Enterpage extends ConsumerWidget {
   const Enterpage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final bool obscrText = false;
+    
     return Scaffold(
       appBar: AppBar(title: Text("K9 Vital Monitor")),
       body: DefaultTabController(
