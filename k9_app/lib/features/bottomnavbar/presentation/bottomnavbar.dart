@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:k9_app/core/providers/theme_provider.dart';
-import 'package:k9_app/features/chatpage/presentation/chat_pages.dart';
+import 'package:k9_app/features/chatpage/presentation/widgets/chat_pages.dart';
 import 'package:k9_app/features/homepage/presentation/widgets/homepage_screen.dart';
 import 'package:k9_app/features/live_monitoring/presentation/pages/live_page.dart';
 import 'package:k9_app/features/profilePage/presentation/profile_page.dart';
