@@ -41,9 +41,9 @@ class _ChatPageState extends ConsumerState<ChatPage> {
           ListTileChat(
             ref: ref,
             name: "Zeynep Su",
-            surname: "Mollaoğlu",
+            surname: "Demir",
             role: "Veteriner",
-            id: "zeynepsu",
+            id: "zeysu",
             currentUserId: widget.userId,
           ),
           Padding(

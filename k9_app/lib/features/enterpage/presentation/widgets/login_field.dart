@@ -45,16 +45,10 @@ class LoginField extends ConsumerWidget {
                   controller: emailController,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
-                    label: Text(
-                      "E-posta",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    hint: Text(
-                      "ornek@gmail.com",
-                      style: TextStyle(color: Color(0xff828291)),
+                    hintText: "E-posta adresinizi girin",
+                    hintStyle: TextStyle(
+                      color: Colors.grey.shade400,
+                      fontSize: 16,
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey),
@@ -73,31 +67,20 @@ class LoginField extends ConsumerWidget {
                   cursorColor: Colors.black,
                   obscureText: isObscure,
                   decoration: InputDecoration(
-                    label: Text(
-                      "Şifre",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
+                    hintText: "Şifrenizi girin",
+                    hintStyle: TextStyle(
+                      color: Colors.grey.shade400,
+                      fontSize: 16,
                     ),
                     suffixIcon: IconButton(
                       onPressed: () {
                         ref.read(obscureTextProvider.notifier).state =
                             !isObscure;
                       },
-
                       icon: Icon(
                         isObscure
                             ? Icons.remove_red_eye_outlined
                             : Icons.visibility_off_outlined,
-                      ),
-                    ),
-                    hint: Text(
-                      "*********",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w200,
-                        color: Colors.black,
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
@@ -124,12 +107,13 @@ class LoginField extends ConsumerWidget {
                   keyboardType: TextInputType.name,
                   controller: idController,
                   decoration: InputDecoration(
-                    label: Text(
-                      "ID",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54,
-                      ),
+                    hintText: "Kullanıcı ID'nizi girin",
+                    hintStyle: TextStyle(
+                      color: Colors.grey.shade400,
+                      fontSize: 16,
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
                     ),
                   ),
                 ),

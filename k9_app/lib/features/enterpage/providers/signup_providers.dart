@@ -3,24 +3,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
 // TextEditingController providers
-final emailControllerProvider = Provider((ref) {
+final signupEmailControllerProvider = Provider((ref) {
   return TextEditingController();
 });
 
-final passwordControllerProvider = Provider((ref) {
+final signupPasswordControllerProvider = Provider((ref) {
   return TextEditingController();
 });
 
-final idControllerProvider = Provider((ref) {
+final signupIdControllerProvider = Provider((ref) {
   return TextEditingController();
 });
 
 // Login form key provider
-final loginFormKeyProvider = Provider((ref) {
+final signupLoginFormKeyProvider = Provider((ref) {
   return GlobalKey<FormState>();
 });
 
 // Obscure text state provider for password visibility toggle
-final obscureTextProvider = StateProvider<bool>((ref) {
+final signupObscureTextProvider = StateProvider<bool>((ref) {
   return true;
 });

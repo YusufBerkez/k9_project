@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:k9_app/features/enterpage/presentation/signup_field.dart';
+import 'package:k9_app/features/enterpage/presentation/widgets/signup_field.dart';
 import 'package:k9_app/features/enterpage/presentation/widgets/login_field.dart';
 
 class Enterpage extends ConsumerWidget {
