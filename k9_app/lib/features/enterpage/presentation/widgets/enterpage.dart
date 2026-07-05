@@ -8,9 +8,12 @@ class Enterpage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
     return Scaffold(
-      appBar: AppBar(title: Text("K9 Vital Monitor")),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text("K9 Vital Monitor"),
+        backgroundColor: Colors.white,
+      ),
       body: DefaultTabController(
         length: 2,
         child: Center(
@@ -30,7 +33,7 @@ class Enterpage extends ConsumerWidget {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.amber.shade100,
+                            color: Colors.grey.shade100,
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(8),
                               topRight: Radius.circular(8),
@@ -38,13 +41,14 @@ class Enterpage extends ConsumerWidget {
                           ),
                           child: TabBar(
                             labelColor: Colors.black,
+                            labelStyle: TextStyle(fontWeight: FontWeight.w600),
                             indicator: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(6),
                             ),
                             indicatorSize: TabBarIndicatorSize.tab,
-                            unselectedLabelColor: Colors.grey,
-
+                            unselectedLabelColor: Colors.grey.shade600,
+                            dividerHeight: 0,
                             tabs: [
                               Tab(text: "Giriş yap"),
                               Tab(text: "Kayıt ol"),
@@ -57,10 +61,7 @@ class Enterpage extends ConsumerWidget {
                             color: Colors.white,
                             height: 400,
                             child: TabBarView(
-                              children: [
-                                LoginField(),
-                                SignupField(),
-                              ],
+                              children: [LoginField(), SignupField()],
                             ),
                           ),
                         ),

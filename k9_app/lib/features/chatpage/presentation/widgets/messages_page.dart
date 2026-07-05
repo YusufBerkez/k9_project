@@ -52,7 +52,7 @@ class _MessagesPageState extends State<MessagesPage> {
     selectedReceiver = widget.receiver_id;
     tftext = TextEditingController();
     loadMessage();
-    final wsUrl = Uri.parse("ws://192.168.88.131:8000/ws/${widget.id}");
+    final wsUrl = Uri.parse("ws://192.168.1.113:8000/ws/${widget.id}");
     webSocketChannel = WebSocketChannel.connect(wsUrl);
     //Test için burayı koydum işlem bitince silinecek
     debugPrint("Connecting to $wsUrl as ${widget.id}");
